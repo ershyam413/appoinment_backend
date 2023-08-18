@@ -11,7 +11,9 @@ require("dotenv").config();
 
 //Home routes
 const HomeCarouselRouter = require("./routes/HomeCarousel");
+const ContactUsRouter = require("./routes/ContactUs");
 app.use("/home", HomeCarouselRouter);
+app.use("/contact", ContactUsRouter);
 
 //Home routes
 
