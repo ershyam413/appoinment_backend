@@ -164,6 +164,7 @@ router.get("/services", async (req, res) => {
     }
 
     const headerRow = await sheet.headerValues;
+
     if (rows?.length > 0) {
       const responseWrapper = new ResponseWrapper();
       const s6tatusDescription = new StatusDescription();
