@@ -200,7 +200,7 @@ router.get("/services", async (req, res) => {
     res.status(500).json(responseWrapper);
   }
 });
-router.get("/whychoose ", async (req, res) => {
+router.get("/whychoose", async (req, res) => {
   try {
     const doc = new GoogleSpreadsheet(RESPONSES_SHEET_ID);
     // use service account creds
@@ -263,7 +263,7 @@ router.get("/whychoose ", async (req, res) => {
     res.status(500).json(responseWrapper);
   }
 });
-router.get("/experts ", async (req, res) => {
+router.get("/experts", async (req, res) => {
   try {
     const doc = new GoogleSpreadsheet(RESPONSES_SHEET_ID);
     // use service account creds
@@ -277,6 +277,69 @@ router.get("/experts ", async (req, res) => {
 
     // Index of the sheet
     let sheet = doc.sheetsByIndex[7];
+
+    // Get all the rows
+    let rows = await sheet.getRows();
+
+    if (rows?.length === 0) {
+      const responseWrapper = new ResponseWrapper();
+      const s6tatusDescription = new StatusDescription();
+      responseWrapper.setStatusDescription(s6tatusDescription);
+      s6tatusDescription.setStatusCode(201);
+      s6tatusDescription.setStatusMessage("No Data Found");
+      return res.status(200).json({ responseWrapper });
+    }
+
+    const headerRow = await sheet.headerValues;
+    if (rows?.length > 0) {
+      const responseWrapper = new ResponseWrapper();
+      const s6tatusDescription = new StatusDescription();
+      responseWrapper.setStatusDescription(s6tatusDescription);
+      s6tatusDescription.setStatusCode(200);
+      s6tatusDescription.setStatusMessage("Success");
+      let data = [];
+
+      for (let index = 0; index < rows.length; index++) {
+        const element = rows[index];
+
+        data.push(element["_rawData"]);
+      }
+
+      const arrayOfObjects = data.map((row) => {
+        const obj = {};
+        for (let i = 0; i < headerRow?.length; i++) {
+          obj[headerRow[i]] = row[i];
+        }
+        return obj;
+      });
+
+      responseWrapper.setData(arrayOfObjects);
+      res.status(200).json({ responseWrapper });
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    const responseWrapper = new ResponseWrapper();
+    const s6tatusDescription = new StatusDescription();
+    responseWrapper.setStatusDescription(s6tatusDescription);
+    s6tatusDescription.setStatusCode(500);
+    s6tatusDescription.setStatusMessage("Internal Server Error");
+    res.status(500).json(responseWrapper);
+  }
+});
+router.get("/consulting", async (req, res) => {
+  try {
+    const doc = new GoogleSpreadsheet(RESPONSES_SHEET_ID);
+    // use service account creds
+    await doc.useServiceAccountAuth({
+      client_email: CREDENTIALS.client_email,
+      private_key: CREDENTIALS.private_key,
+    });
+
+    // load the documents info
+    await doc.loadInfo();
+
+    // Index of the sheet
+    let sheet = doc.sheetsByIndex[9];
 
     // Get all the rows
     let rows = await sheet.getRows();
@@ -472,6 +535,30 @@ router.post("/contactus", async (req, res) => {
     await sheet.addRow(req.body);
 
     res.status(201).json({ message: "Data added successfully" });
+  } catch (error) {
+    console.error("Error adding data:", error);
+    res.status(500).json({ error: "An error occurred while adding data" });
+  }
+});
+router.post("/getmail", async (req, res) => {
+  try {
+    const doc = new GoogleSpreadsheet(RESPONSES_SHEET_ID);
+    // use service account creds
+    await doc.useServiceAccountAuth({
+      client_email: CREDENTIALS.client_email,
+      private_key: CREDENTIALS.private_key,
+    });
+
+    // load the documents info
+    await doc.loadInfo();
+
+    // Index of the sheet
+    let sheet = doc.sheetsByIndex[8];
+
+    // Get all the rows
+    await sheet.addRow(req.body);
+
+    res.status(201).json({ message: "Email added successfully" });
   } catch (error) {
     console.error("Error adding data:", error);
     res.status(500).json({ error: "An error occurred while adding data" });
