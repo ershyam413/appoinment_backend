@@ -18,8 +18,7 @@ app.use("/home", HomeCarouselRouter);
 app.use("/blogs", Blogsrouter);
 app.use("/services", servicesrouter);
 //Home routes
-db.sequelize.sync().then(() => {
-  app.listen(port, () => {
-    console.log(`Server running on port http://localhost:${port}`);
-  });
+
+app.listen(port, () => {
+  console.log(`Server running on port http://localhost:${port}`);
 });
