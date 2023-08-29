@@ -11,14 +11,21 @@ require("dotenv").config();
 
 //Home routes
 const HomeCarouselRouter = require("./routes/HomeCarousel");
+const Blogsrouter = require("./routes/Blogs");
+const servicesrouter = require("./routes/Services");
+const Resourcerouter = require("./routes/Resource");
 
-const ContactUsRouter = require("./routes/ContactUs");
 app.use("/home", HomeCarouselRouter);
-app.use("/contact", ContactUsRouter);
-
+app.use("/blogs", Blogsrouter);
+app.use("/services", servicesrouter);
+app.use("/resources", Resourcerouter);
 //Home routes
-// db.sequelize.sync().then(() => {
+
 app.listen(port, () => {
-  console.log(`Server running on port http://localhost:${port}`);
+  try {
+    console.log(`Server running on port http://localhost:${port}`);
+  } catch (error) {
+    console.log(error);
+  }
 });
 // });

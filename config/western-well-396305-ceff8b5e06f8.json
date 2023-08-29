@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "western-well-396305",
+  "private_key_id": "ceff8b5e06f8dba33e972c59445fc780e138d7f6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCxwhxKGKKNFyQR\nFPC4FdyNJxeov8vSGDc6H3yVWZ/yfhKibzcN1S5qCKYSe5SHQUA9XGtj8GCkAwFe\nimbtxPtG3ScVvKrNHrHsN9UhQr6tMe96GNsgqjMlkRXC0g9icaqEtht4dXeYrScm\nKWDZMZYk5WbZl4Kc7ytAN6OmiD0Ucfh1nWdRN1fvHNQ8/C7qqSAGO3GOg03Gu43L\nnOIbnP2Tr/6nr8pz142xBUAeugY0PDGrzG29e5i4ww7yUV7QIyBB4WOFGGeJBAUs\n8FOq9IcKfL1SMpMAQO3MiybBowqcqduwEft6ytEYVBUTiYKamOLh1umSdDi6i2KZ\n3yF+vRX1AgMBAAECggEADBx643SGvMC3IR/RX+WDa62eb82zlCq4tpHXIfDjlDjR\nSbZ0pJFiEnDo6cj4P3fradLecUZ7OymGQhwBc9FQQo2GYHWEmKmu+zZ5o8TBq5jD\npYjEg1b9WaGnPykjSbSPZu/mcsBkJ+eiS3gVxG6buYNUzN4FFO65vmwcDxhouvgE\n187MdelDvHxe1HDLSt+p08stzlRcqbTh94URhp5ozH/mQqFhY1ci7rhNNEMQo6TV\n0SsD9sg1/9pdkRx2yOgrAfc0Sw+/7EstgpEwTd+ThMDIK6tRcjI7twJ2DBcUrXHV\nouC1j+EeQjIzNW+AlYF0MsVWXTyBz9948gKCYwLB8QKBgQDgXERXCTBYs0J7VBF1\nwfjOfzYKCIydfEGTZzQbrnIUlu/Z+iPcWux2Yf228L1/VwQYFGJCa30C6aOhoqi8\n5Ad1gn6l169loXwh+jL4FwaYTzmCXP0HVgObM/P9ccsbvYB4NkX4b6EHLyrqHrJl\ntwb95ZP5kymCwTazwRTLbcqIBQKBgQDK03AueABAiNQuLhDoN/SwcT/DI4P/Ro+c\nX7wW88k1Gam53g4vuriYTHql09TUkK7SV6hAdWarP1fCiTQcqZAnx7rJlk2W6CQv\nSri4o0ls+J5vWPAq7nCGXe4dqAMd+4aa6ugfRjuuvwntcjZh7ho3pQswZ7M5PdcQ\nxS+A9qNpMQKBgQDeQiklO6IcTMDwYdDGIjkzf4vuFpgOLxjbSGKzhXXX9cp32rgJ\nxDz57Ysk3oorCu2wWQkaGVeHOiLyrauRLChDfdmuuuMzv+yz0CML5+uNmPY0sZ+r\n08bQyn/LtB3sRidtbv6T5SnVbyGJOo2p+82+Wd7kX6fAs11YZ08NU59ObQKBgQCQ\nS+a2mJcNUospo4pRu2VwldFYIg9JcMjA5ncpGR1fkrdmTW1oVX34lAh5q3/yDlDh\nwo0n9p4pXPIxq20Qqy2sr3La8fyXTOZZYt6SNVEKnsIQ04Rh9qrFXVQHcz1sekKk\nOlUT0uKpCq6kaCn6d+vdBKU2NcCTC8TS4IZQSKevMQKBgQCVboZy3ilT7E4Ykmwa\n/sPB6W2+XiKJcyIvtDMSpXXeyofedKWrJsJ2xpBhC+Rax1IVGto0yqI/5K8lo9VL\nUWHPlKiu36V7fUZnNcMpN2C2Q3GRpV9K4JCvkQr+pdUvkY4HO8G5OsuaegKVvOZC\nLl7N3j7JdUOfR7dZTYOSNHn4Pg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "tmp-direct@western-well-396305.iam.gserviceaccount.com",
+  "client_id": "112361234019617505377",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tmp-direct%40western-well-396305.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
