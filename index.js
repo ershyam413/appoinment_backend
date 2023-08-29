@@ -17,8 +17,8 @@ app.use("/home", HomeCarouselRouter);
 app.use("/contact", ContactUsRouter);
 
 //Home routes
-db.sequelize.sync().then(() => {
-  app.listen(port, () => {
-    console.log(`Server running on port http://localhost:${port}`);
-  });
+// db.sequelize.sync().then(() => {
+app.listen(port, () => {
+  console.log(`Server running on port http://localhost:${port}`);
 });
+// });

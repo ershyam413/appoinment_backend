@@ -8,68 +8,23 @@ const RESPONSES_SHEET_ID = "1LbiWn2FTsDOPJlyDFAhLMPO6-6-trotiGKPvMLuZj4M";
 const CREDENTIALS = JSON.parse(
   fs.readFileSync("./config/western-well-396305-5d14ad187d68.json")
 );
-
+const axios = require("axios");
 router.get("/carousel", async (req, res) => {
   try {
-    const doc = new GoogleSpreadsheet(RESPONSES_SHEET_ID);
-    // use service account creds
-    await doc.useServiceAccountAuth({
-      client_email: CREDENTIALS.client_email,
-      private_key: CREDENTIALS.private_key,
-    });
-
-    // load the documents info
-    await doc.loadInfo();
-
-    // Index of the sheet
-    let sheet = doc.sheetsByIndex[0];
-
-    // Get all the rows
-    let rows = await sheet.getRows();
-
-    if (rows?.length === 0) {
-      const responseWrapper = new ResponseWrapper();
-      const s6tatusDescription = new StatusDescription();
-      responseWrapper.setStatusDescription(s6tatusDescription);
-      s6tatusDescription.setStatusCode(201);
-      s6tatusDescription.setStatusMessage("No Data Found");
-      return res.status(200).json({ responseWrapper });
+    const data = await axios.get(
+      "https://script.google.com/macros/s/AKfycbyI8OlSN4WTMZ9fm90_7B68FHr3I9UWBthni8SHP1XqTUG38sGJAyXWtwxh2CNmQFGg_w/exec?id=1LbiWn2FTsDOPJlyDFAhLMPO6-6-trotiGKPvMLuZj4M"
+    );
+    if (data instanceof Object && Object.keys(data).length) {
+      res.status(200).json({ status: true, response: data.data });
+    } else {
+      res
+        .status(200)
+        .json({ status: false, response: "Error reading sheet data" });
     }
-
-    const headerRow = await sheet.headerValues;
-    if (rows?.length > 0) {
-      const responseWrapper = new ResponseWrapper();
-      const s6tatusDescription = new StatusDescription();
-      responseWrapper.setStatusDescription(s6tatusDescription);
-      s6tatusDescription.setStatusCode(200);
-      s6tatusDescription.setStatusMessage("Success");
-      let data = [];
-
-      for (let index = 0; index < rows.length; index++) {
-        const element = rows[index];
-
-        data.push(element["_rawData"]);
-      }
-
-      const arrayOfObjects = data.map((row) => {
-        const obj = {};
-        for (let i = 0; i < headerRow?.length; i++) {
-          obj[headerRow[i]] = row[i];
-        }
-        return obj;
-      });
-
-      responseWrapper.setData(arrayOfObjects);
-      res.status(200).json({ responseWrapper });
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    const responseWrapper = new ResponseWrapper();
-    const s6tatusDescription = new StatusDescription();
-    responseWrapper.setStatusDescription(s6tatusDescription);
-    s6tatusDescription.setStatusCode(500);
-    s6tatusDescription.setStatusMessage("Internal Server Error");
-    res.status(500).json(responseWrapper);
+  } catch (err) {
+    res
+      .status(200)
+      .json({ status: false, response: `Error in API call :- ${err}` });
   }
 });
 
