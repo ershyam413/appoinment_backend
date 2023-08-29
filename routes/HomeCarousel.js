@@ -9,7 +9,7 @@ const CREDENTIALS = JSON.parse(
   fs.readFileSync("./config/western-well-396305-5d14ad187d68.json")
 );
 const axios = require("axios");
-router.get("/carousel", async (req, res) => {
+router.get("/all", async (req, res) => {
   try {
     const data = await axios.get(
       "https://script.google.com/macros/s/AKfycbyI8OlSN4WTMZ9fm90_7B68FHr3I9UWBthni8SHP1XqTUG38sGJAyXWtwxh2CNmQFGg_w/exec?id=1LbiWn2FTsDOPJlyDFAhLMPO6-6-trotiGKPvMLuZj4M"
