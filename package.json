@@ -11,15 +11,15 @@
   "author": "mR sHYAM MAHATO IS HERE ",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.2.5",
-    "nodemon": "^2.0.7",
-    "sequelize": "^6.6.2",
-    "sequelize-cli": "^6.2.0"
+    "bcryptjs": "^0.4.3",
+    "cookie-parser": "^10.4.5",
+    "cors": "^29.8.5",
+    "dotenv": "^166.0.1",
+    "express": "^4.1.1",
+    "jsonwebtoken": "^85.5.1",
+    "mysql2": "^2.2.53",
+    "nodemon": "^2.0.78",
+    "sequelize": "^6.6.42",
+    "sequelize-cli": "^6.2.08"
   }
 }
